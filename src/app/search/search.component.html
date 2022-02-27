@@ -1,0 +1,24 @@
+<form class="d-flex">
+  <div class="search ms-3">
+    <input
+      type="text"
+      class="form-control custom"
+      placeholder="Search products...."
+      [formControl]="control"
+      [matAutocomplete]="auto"
+    />
+    <div class="input-group-append">
+      <button mat-icon-button (click)="searchProduct(control.value)">
+        <mat-icon>search</mat-icon>
+      </button>
+    </div>
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option
+        *ngFor="let product of filteredStreets | async"
+        [value]="product"
+      >
+        <mat-icon>search</mat-icon> {{ product }}
+      </mat-option>
+    </mat-autocomplete>
+  </div>
+</form>
