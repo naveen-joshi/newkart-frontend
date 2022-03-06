@@ -22,9 +22,11 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { LoginComponent } from './login/login.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoaderComponent } from './loader/loader.component';
 import { ProfileModule } from './profile/profile.module';
+import { CookieService } from 'ngx-cookie-service';
+import { AuthHttpInterceptor } from './auth-http.interceptor';
 
 @NgModule({
   declarations: [
@@ -57,7 +59,10 @@ import { ProfileModule } from './profile/profile.module';
     MatSnackBarModule,
     ProfileModule,
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true },
+    CookieService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

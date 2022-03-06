@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-lg">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <button
       mat-button
@@ -33,13 +33,10 @@
             >Home</a
           >
         </li>
-        <li class="nav-item">
-          <a mat-button class="nav-link" href="#">Link</a>
-        </li>
-        <app-search></app-search>
+        <app-search *ngIf="!isAdmin"></app-search>
       </ul>
     </div>
-    <div class="me-2">
+    <div class="me-2" *ngIf="!isAdmin">
       <button mat-raised-button color="primary" routerLink="cart">
         <mat-icon>shopping_cart</mat-icon> Cart
         <span class="badge bg-light text-dark ms-1">{{ cartCount }}</span>

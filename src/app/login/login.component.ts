@@ -1,7 +1,10 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormControl, NgForm } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { CookieService } from 'ngx-cookie-service';
+import { Subject } from 'rxjs';
 import { AuthService } from '../auth.service';
+import { User } from '../user.types';
 
 @Component({
   selector: 'app-login',
@@ -17,8 +20,10 @@ export class LoginComponent implements OnInit {
   public isSuccess = false;
   public errorMessage = '';
   public successMesage = '';
+
   constructor(
     private authService: AuthService,
+    private cookieService: CookieService,
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<LoginComponent>
   ) {}
@@ -43,7 +48,7 @@ export class LoginComponent implements OnInit {
     this.isLoading = true;
     this.authService.loginUser(loginForm.value).subscribe(
       (response) => {
-        console.log(response);
+        this.cookieService.set('loggedIn', 'true');
         localStorage.setItem('User', JSON.stringify(response));
         this.isLoading = false;
         this.isSuccess = true;

@@ -37,11 +37,10 @@ export class HomeComponent implements OnInit {
   constructor(public dialog: MatDialog, private cartService: CartService) {}
 
   ngOnInit(): void {
-    const dialogRef = this.dialog.open(UserInfo);
-
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
-    });
+    // const dialogRef = this.dialog.open(UserInfo);
+    // dialogRef.afterClosed().subscribe((result) => {
+    //   console.log(`Dialog result: ${result}`);
+    // });
   }
 
   public navigateToCategory(id: number) {

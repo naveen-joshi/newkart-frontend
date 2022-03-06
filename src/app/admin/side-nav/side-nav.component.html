@@ -1,0 +1,61 @@
+<div
+  class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100"
+>
+  <ul
+    class="nav flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start text-white"
+    id="menu"
+  >
+    <li>
+      <a
+        routerLink="/admin"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="nav-link px-0 align-middle"
+      >
+        <i class="fs-4 bi-activity"></i>
+        <span class="ms-1 d-none d-sm-inline">Dashboard</span></a
+      >
+    </li>
+    <li>
+      <a
+        routerLink="/admin/categories"
+        routerLinkActive="active"
+        class="nav-link px-0 align-middle"
+      >
+        <i class="fs-4 bi-tags"></i>
+        <span class="ms-1 d-none d-sm-inline">Categories</span></a
+      >
+    </li>
+    <li>
+      <a
+        routerLink="/admin/products"
+        routerLinkActive="active"
+        class="nav-link px-0 align-middle"
+      >
+        <i class="fs-4 bi-grid"></i>
+        <span class="ms-1 d-none d-sm-inline">Products</span></a
+      >
+    </li>
+    <li>
+      <a
+        routerLink="/admin/orders"
+        routerLinkActive="active"
+        class="nav-link px-0 align-middle"
+      >
+        <i class="fs-4 bi-cart3"></i>
+        <span class="ms-1 d-none d-sm-inline">Orders</span></a
+      >
+    </li>
+    <li>
+      <a
+        routerLink="/admin/users"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="nav-link px-0 align-middle"
+      >
+        <i class="fs-4 bi-people"></i>
+        <span class="ms-1 d-none d-sm-inline">Users</span>
+      </a>
+    </li>
+  </ul>
+</div>

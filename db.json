@@ -1,0 +1,75 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "products": [
+    {
+      "_id": "1",
+      "name": "product1",
+      "availableInStock": 100,
+      "category": "Mobile"
+    },
+    {
+      "_id": "2",
+      "name": "product2",
+      "availableInStock": 100,
+      "category": "Mobile"
+    },
+    {
+      "_id": "3",
+      "name": "product3",
+      "availableInStock": 100,
+      "category": "Mobile"
+    },
+    {
+      "_id": "4",
+      "name": "product4",
+      "availableInStock": 100,
+      "category": "Mobile"
+    },
+    {
+      "_id": "5",
+      "name": "product5",
+      "availableInStock": 100,
+      "category": "Mobile"
+    },
+    {
+      "_id": "6",
+      "name": "product6",
+      "availableInStock": 100,
+      "category": "Mobile"
+    },
+    {
+      "_id": "7",
+      "name": "product7",
+      "availableInStock": 100,
+      "category": "Mobile"
+    },
+    {
+      "_id": "8",
+      "name": "product8",
+      "availableInStock": 100,
+      "category": "Mobile"
+    },
+    {
+      "_id": "9",
+      "name": "product9",
+      "availableInStock": 100,
+      "category": "Mobile"
+    }
+  ]
+}
