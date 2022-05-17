@@ -1,37 +1,18 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <button
-      mat-button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarTogglerDemo02"
-      aria-controls="navbarTogglerDemo02"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
+    <button mat-button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+      data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
+      aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <a class="navbar-brand" routerLink="home">
-      <img
-        src="..."
-        alt=""
-        width="30"
-        height="24"
-        class="d-inline-block align-text-top"
-      />
+      <img src="..." alt="" width="30" height="24" class="d-inline-block align-text-top" />
       NewKart
     </a>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a
-            mat-button
-            class="nav-link active"
-            aria-current="page"
-            routerLink="home"
-            >Home</a
-          >
+          <a mat-button class="nav-link active" aria-current="page" routerLink="home">Home</a>
         </li>
         <app-search *ngIf="!isAdmin"></app-search>
       </ul>
@@ -43,40 +24,18 @@
       </button>
     </div>
     <div class="dropdown me-2" *ngIf="isLoggedIn">
-      <button
-        mat-raised-button
-        class="dropdown-toggle"
-        type="button"
-        color="primary"
-        id="dropdownMenuButton1"
-        data-bs-toggle="dropdown"
-        aria-expanded="false"
-      >
-        {{ username | titlecase }}
+      <button mat-raised-button class="dropdown-toggle" type="button" color="primary" id="dropdownMenuButton1"
+        data-bs-toggle="dropdown" aria-expanded="false">
+        Username
       </button>
-      <ul
-        class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start"
-        aria-labelledby="dropdownMenuButton1"
-      >
+      <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start" aria-labelledby="dropdownMenuButton1">
         <li><a class="dropdown-item" routerLink="profile">My Profile</a></li>
       </ul>
     </div>
-    <button
-      mat-raised-button
-      color="primary"
-      class="me-2"
-      (click)="openLoginDialog()"
-      *ngIf="!isLoggedIn"
-    >
+    <button mat-raised-button color="primary" class="me-2" routerLink="auth/login" *ngIf="!isLoggedIn">
       Login
     </button>
-    <button
-      mat-raised-button
-      color="warn"
-      class="me-2"
-      (click)="onLogout()"
-      *ngIf="isLoggedIn"
-    >
+    <button mat-raised-button color="warn" class="me-2" (click)="onLogout()" *ngIf="isLoggedIn">
       Logout
     </button>
   </div>

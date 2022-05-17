@@ -1,0 +1,39 @@
+<div>
+  <h1>{{ categoryName }}</h1>
+  <div class="row row-cols-3">
+    <div class="col" *ngFor="let product of products">
+      <div class="card">
+        <div class="card-body">
+          <div class="d-flex justify-content-between">
+            <div>
+              <mat-icon>loyalty</mat-icon>{{product.brand | uppercase}}
+            </div>
+            <div *ngIf="product.countInStock < 1">
+              <p class="text-danger">Out of Stock</p>
+            </div>
+            <div *ngIf="product.countInStock > 1 && product.countInStock < 5">
+              <p class="text-warning">Selling Fast</p>
+            </div>
+            <div *ngIf="product.countInStock > 5">
+              <p class="text-success">In Stock</p>
+            </div>
+          </div>
+          <a routerLink="/product-details/{{product.id}}">
+            <div class="d-flex justify-content-center">
+              <img class="img-fluid rounded" width="200px" height="150px"
+                src="assets/server/{{product.image.split('/')[5]}}">
+            </div>
+            <p class="h5 card-title text-center"> {{ product.name }} </p>
+            <p class="text-hint">{{product.description}}</p>
+          </a>
+          <div class="d-flex justify-content-between align-items-center">
+            <div>{{ product.price | currency: 'USD'}}</div>
+            <div><button mat-icon-button color="primary" routerLink="/product-details/{{product.id}}">
+                <mat-icon>shopping_cart</mat-icon>
+              </button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

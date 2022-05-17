@@ -1,0 +1,21 @@
+<table class="table table-responsive table-bordered">
+  <thead>
+    <th>Id</th>
+    <th>Category Name</th>
+    <th>Category Icon</th>
+    <th>Action</th>
+  </thead>
+  <tbody>
+    <ng-container *ngIf="categories$ | async as categories">
+      <tr *ngFor="let category of categories; index as i">
+        <td>{{category.id}}</td>
+        <td>{{category.name}}</td>
+        <td>{{category.icon}}</td>
+        <td>
+          <button class="btn btn-primary" routerLink="update-category">Update</button> &nbsp;
+          <button class="btn btn-danger" (click)="deleteCategory(category.id)">Delete</button>
+        </td>
+      </tr>
+    </ng-container>
+  </tbody>
+</table>

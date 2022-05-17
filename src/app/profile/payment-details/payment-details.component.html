@@ -1,1 +1,60 @@
-<p>payment-details works!</p>
+<h1>Save Cards Information</h1>
+<button mat-stroked-button color="primary" *ngIf="!showPaymentForm" (click)="showPaymentForm = true ">
+  <mat-icon>add</mat-icon> Add New Card
+</button>
+<form *ngIf="showPaymentForm" [formGroup]="paymentDetails" (ngSubmit)="onSubmit()">
+  <h3 color="text-primary">Add New Card</h3>
+  <div class="row">
+    <p>Name</p>
+    <div class="col">
+      <mat-form-field appearance="outline">
+        <mat-label>Name On Card</mat-label>
+        <input matInput placeholder="Placeholder" formControlName="cardHolderName">
+        <mat-icon matSuffix>person</mat-icon>
+      </mat-form-field>
+    </div>
+    <div class="col">
+      <mat-form-field appearance="outline" color="primary">
+        <mat-label>Card Number</mat-label>
+        <input matInput placeholder="Placeholder" formControlName="cardNumber">
+        <mat-icon matSuffix>card</mat-icon>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+
+    <div class="col">
+      <mat-form-field appearance="outline">
+        <mat-label>Save Card Name</mat-label>
+        <input matInput placeholder="Placeholder" formControlName="cardName">
+        <mat-icon matSuffix>person</mat-icon>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="my-2">
+    <button mat-flat-button color="primary"> Submit </button> &nbsp;
+    <button mat-flat-button color="warn" (click)="onReset()"> Cancel </button>
+  </div>
+</form>
+<hr *ngIf="showPaymentForm">
+<div class="list-group mt-2">
+  <li class="list-group-item" *ngFor="let card of savedCards; index as i;">
+    <div class="d-flex w-100 justify-content-between">
+      <h5>{{card.cardName}}</h5>
+      <div>
+        <button mat-icon-button>
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button (click)="onDelete(i)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </div>
+    <p class="mb-1">
+      <span><strong>{{card.cardHolderName}}</strong></span> &nbsp;&nbsp;
+    </p>
+    <p class="mb-1">
+      <span>{{card.cardNumber | cardNumberFormat}}</span>
+    </p>
+  </li>
+</div>

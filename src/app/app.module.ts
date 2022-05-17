@@ -8,25 +8,19 @@ import { HomeComponent, UserInfo } from './home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
 
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatButtonModule } from '@angular/material/button';
-import { MatInputModule } from '@angular/material/input';
-import { MatIconModule } from '@angular/material/icon';
 import { LatestComponent } from './latest/latest.component';
-import { MatCardModule } from '@angular/material/card';
-import { MatDividerModule } from '@angular/material/divider';
 import { SearchComponent } from './search/search.component';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { CartComponent } from './cart/cart.component';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './authentication/login/login.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoaderComponent } from './loader/loader.component';
 import { ProfileModule } from './profile/profile.module';
 import { CookieService } from 'ngx-cookie-service';
-import { AuthHttpInterceptor } from './auth-http.interceptor';
+import { AuthHttpInterceptor } from './authentication/service/auth-http.interceptor';
+import { SharedModule } from './shared/shared.module';
+import { ProductsComponent } from './products/products.component';
 
 @NgModule({
   declarations: [
@@ -37,10 +31,10 @@ import { AuthHttpInterceptor } from './auth-http.interceptor';
     LatestComponent,
     SearchComponent,
     CartComponent,
-    LoginComponent,
     ProductDetailsComponent,
     SearchResultsComponent,
-    LoaderComponent,
+    ProductsComponent,
+    // LoaderComponent
   ],
   imports: [
     BrowserModule,
@@ -49,14 +43,7 @@ import { AuthHttpInterceptor } from './auth-http.interceptor';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MatDialogModule,
-    MatButtonModule,
-    MatInputModule,
-    MatIconModule,
-    MatCardModule,
-    MatDividerModule,
-    MatAutocompleteModule,
-    MatSnackBarModule,
+    SharedModule,
     ProfileModule,
   ],
   providers: [
@@ -65,4 +52,4 @@ import { AuthHttpInterceptor } from './auth-http.interceptor';
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

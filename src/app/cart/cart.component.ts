@@ -10,7 +10,7 @@ import { CartService } from './cart.service';
 export class CartComponent implements OnInit {
   public items: Product[] = [];
   public cartTotal: number = 0;
-  constructor(private cartService: CartService) {}
+  constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
     this.items = this.cartService.getItems();

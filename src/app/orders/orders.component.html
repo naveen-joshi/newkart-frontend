@@ -1,0 +1,25 @@
+<div class="row my-2" *ngFor="let order of orders; index as i">
+  <div class="col-md-8 offset-md-2">
+    <div class="card">
+      <a class="order_card" routerLink="{{ order.productId }}">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-4 col-md-2">
+              <img class="img-fluid rounded" [src]="order.product_img">
+            </div>
+            <div class="col-sm-8 col-md-4">
+              <p>{{order.productName}}</p>
+            </div>
+            <div class="col-sm-4 col-md-2">
+              <p>{{order.price | currency: 'INR'}}</p>
+            </div>
+            <div class="col-sm-8 col-md-4">
+              <p>Delieverd On: {{order.delivered.delivery_date}}</p>
+              <p>Address: {{order.delivered.address}}</p>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>

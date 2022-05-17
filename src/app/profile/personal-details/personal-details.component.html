@@ -1,1 +1,49 @@
-<p>personal-details works!</p>
+<h1>Personal Information</h1>
+<form [formGroup]="personalDetails" (ngSubmit)="onSubmit()">
+  <div class="row">
+    <p>Name</p>
+    <div class="col">
+      <mat-form-field appearance="outline">
+        <mat-label>First Name</mat-label>
+        <input matInput placeholder="Placeholder" formControlName="firstName" value="Naveen" [disabled]="true">
+        <mat-icon matSuffix>person</mat-icon>
+      </mat-form-field>
+    </div>
+    <div class="col">
+      <mat-form-field appearance="outline" color="primary">
+        <mat-label>Last Name</mat-label>
+        <input matInput placeholder="Placeholder" formControlName="lastName" value="Joshi" [disabled]="true">
+        <mat-icon matSuffix>person</mat-icon>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <p>Gender</p>
+    <div class="col">
+      <mat-radio-group disabled="true">
+        <mat-radio-button value="male" checked="true">Male </mat-radio-button>
+        <mat-radio-button value="female">Female</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </div>
+  <div class="row mt-2">
+    <p>Mobile</p>
+    <div class="col">
+      <mat-form-field appearance="outline" color="primary">
+        <mat-label>Mobile Number</mat-label>
+        <input matInput placeholder="Placeholder" value="8769623155" disabled="true">
+        <mat-icon matSuffix>phone</mat-icon>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <p>Email</p>
+    <div class="col">
+      <mat-form-field appearance="outline" color="primary">
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="Placeholder" value="njoshi6363@gmail.com" disabled="true">
+        <mat-icon matSuffix>mail</mat-icon>
+      </mat-form-field>
+    </div>
+  </div>
+</form>

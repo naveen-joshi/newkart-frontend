@@ -1,1 +1,90 @@
-<p>address-details works!</p>
+<h1>Address Information</h1>
+<button mat-stroked-button color="primary" *ngIf="!showAddressForm" (click)="showAddressForm = true ">
+  <mat-icon>add</mat-icon> Add New Address
+</button>
+<form *ngIf="showAddressForm" [formGroup]="addressDetails" (ngSubmit)="onSubmit()">
+  <h3 color="text-primary">Add New Address</h3>
+  <div class="row">
+    <p>Name</p>
+    <div class="col">
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="Placeholder" formControlName="name">
+        <mat-icon matSuffix>person</mat-icon>
+      </mat-form-field>
+    </div>
+    <div class="col">
+      <mat-form-field appearance="outline" color="primary">
+        <mat-label>Mobile Number</mat-label>
+        <input matInput placeholder="Placeholder" formControlName="mobile">
+        <mat-icon matSuffix>phone</mat-icon>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <mat-form-field appearance="outline">
+      <mat-label>Address</mat-label>
+      <textarea matInput placeholder="Ex. 100 Main St" formControlName="address">1600 Amphitheatre Pkwy</textarea>
+    </mat-form-field>
+  </div>
+  <table class="example-full-width" cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>City</mat-label>
+          <input matInput placeholder="Ex. San Francisco" formControlName="city">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>State</mat-label>
+          <input matInput placeholder="Ex. California" formControlName="state">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Postal Code</mat-label>
+          <input matInput #postalCode minlength="6" maxlength="6" placeholder="Ex. 342301" value="342301"
+            formControlName="zipcode">
+          <mat-hint align="end">{{postalCode.value.length}} / 6</mat-hint>
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+  <div class="row">
+    <p>Address Type</p>
+    <div class="col">
+      <mat-radio-group formControlName="addressType">
+        <mat-radio-button value="work" checked="true">Work </mat-radio-button>
+        <mat-radio-button value="home">Home</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </div>
+  <div class="my-2">
+    <button mat-flat-button color="primary"> Submit </button> &nbsp;
+    <button mat-flat-button color="warn"> Cancel </button>
+  </div>
+</form>
+<hr *ngIf="showAddressForm">
+<div class="list-group mt-2">
+  <li class="list-group-item">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="address_type">Home</h5>
+      <div>
+        <button mat-icon-button>
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button>
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </div>
+    <p class="mb-1">
+      <span><strong>Naveen Joshi</strong></span> &nbsp;&nbsp;
+      <span><strong>8769623155</strong></span> &nbsp;&nbsp;
+    </p>
+    <p class="mb-1">
+      <span>210, Raghunathpura, Lordiyan, Phalodi, Rajasthan - </span> <strong>342301</strong>
+    </p>
+  </li>
+</div>

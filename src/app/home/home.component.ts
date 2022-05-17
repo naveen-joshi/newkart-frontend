@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CartService } from '../cart/cart.service';
 import { Product } from '../product.types';
+import { CategoryService } from './category.service';
 
 @Component({
   selector: 'app-home',
@@ -34,7 +35,9 @@ export class HomeComponent implements OnInit {
     },
   ];
 
-  constructor(public dialog: MatDialog, private cartService: CartService) {}
+  constructor(public dialog: MatDialog, private cartService: CartService, private categoryService: CategoryService) { }
+
+  categories$ = this.categoryService.categories$;
 
   ngOnInit(): void {
     // const dialogRef = this.dialog.open(UserInfo);
@@ -60,4 +63,4 @@ export class HomeComponent implements OnInit {
   selector: 'userInfo',
   templateUrl: 'userInfo.html',
 })
-export class UserInfo {}
+export class UserInfo { }

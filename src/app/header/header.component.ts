@@ -1,9 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { CookieService } from 'ngx-cookie-service';
 import { CartService } from '../cart/cart.service';
-import { LoginComponent } from '../login/login.component';
+import { AuthService } from '../authentication/service/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -18,49 +16,32 @@ export class HeaderComponent implements OnInit {
   public username = '';
   constructor(
     private cartService: CartService,
-    public dialog: MatDialog,
     private router: Router,
-    private cookieService: CookieService
-  ) {}
+    private authService: AuthService,
+    public changeDetector: ChangeDetectorRef
+  ) { }
 
   ngOnInit(): void {
-    let user = localStorage.getItem('User') as string;
+    this.authService.isLoggedIn.subscribe((data) => {
+      this.isLoggedIn = data;
+    })
+    let user = localStorage.getItem('jwtToken') as string;
     if (user) {
       this.isLoggedIn = true;
     }
-    this.username = JSON.parse(user).name;
-    if (this.username === 'admin') {
-      this.isAdmin = true;
-      this.router.navigate(['/admin']);
-    }
+
     this.cartService.cartCount.subscribe((data) => {
       this.cartCount = data;
     });
   }
-  openLoginDialog() {
-    const dialogRef = this.dialog.open(LoginComponent, {
-      data: { isLoggedIn: this.isLoggedIn },
-      disableClose: false,
-    });
 
-    dialogRef.afterClosed().subscribe((result) => {
-      this.isLoggedIn = result;
-      let user = localStorage.getItem('User') as string;
-      if (user) {
-        this.isLoggedIn = true;
-      }
-      this.username = JSON.parse(user).name;
-      if (this.username === 'admin') {
-        this.isAdmin = true;
-        this.router.navigate(['/admin']);
-      }
-    });
+  ngOnChanges() {
+    this.changeDetector.detectChanges();
   }
 
   onLogout() {
-    this.isLoggedIn = false;
-    this.cookieService.delete('loggedIn');
-    localStorage.removeItem('User');
+    this.authService.logout();
+    this.authService.isLoggedIn.next(false);
     this.router.navigate(['/']);
   }
 }

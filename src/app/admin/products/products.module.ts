@@ -6,7 +6,7 @@ import { ProductsComponent } from './products.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { UpdateProductComponent } from './update-product/update-product.component';
 import { ViewProductComponent } from './view-product/view-product.component';
-import { MatButtonModule } from '@angular/material/button';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -15,6 +15,6 @@ import { MatButtonModule } from '@angular/material/button';
     UpdateProductComponent,
     ViewProductComponent,
   ],
-  imports: [CommonModule, ProductsRoutingModule, MatButtonModule],
+  imports: [CommonModule, ProductsRoutingModule, SharedModule],
 })
-export class ProductsModule {}
+export class ProductsModule { }

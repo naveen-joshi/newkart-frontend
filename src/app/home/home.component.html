@@ -1,15 +1,36 @@
 <app-latest></app-latest>
+<div class="row my-3 mx-3">
+  <mat-card class="mat-elevation-z6">
+    <mat-card-title>
+      <div class="d-flex justify-content-between mx-3">
+        <div>Explore Categories</div>
+      </div>
+      <mat-divider></mat-divider>
+      <div class="row my-3 d-flex justify-content-around">
+        <ng-container *ngIf="categories$ | async as categories">
+          <div class="col" *ngFor="let category of categories; index as i">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="text-center">
+                  <a routerLink="/products" [queryParams]="{category: category.id}">{{ category.name }}</a>
+                </h4>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </mat-card-title>
+  </mat-card>
+</div>
+
 <div class="row my-3 mx-3" *ngFor="let card of homeCards">
+
   <mat-card class="mat-elevation-z6">
     <mat-card-title>
       <div class="d-flex justify-content-between mx-3">
         <div>{{ card.title }}</div>
         <div>
-          <button
-            mat-raised-button
-            color="primary"
-            (click)="navigateToCategory(card.id)"
-          >
+          <button mat-raised-button color="primary" (click)="navigateToCategory(card.id)">
             View ALL
           </button>
         </div>
@@ -20,28 +41,16 @@
       <div class="row">
         <div class="col" *ngFor="let product of card.products">
           <mat-card class="shadow-sm">
-            <img
-              mat-card-image
-              src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-              class="img-fluid"
-              alt="Photo of a Shiba Inu"
-            />
+            <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" class="img-fluid"
+              alt="Photo of a Shiba Inu" />
             <mat-card-title>Shiba Inu</mat-card-title>
             <mat-card-subtitle>{{ product.pname }}</mat-card-subtitle>
             <mat-card-actions>
-              <button
-                mat-stroked-button
-                (click)="onAddCart(product)"
-                color="accent"
-              >
+              <button mat-stroked-button (click)="onAddCart(product)" color="accent">
                 Add to Cart
               </button>
-              <button
-                mat-stroked-button
-                [routerLink]="['/product-details', product.pid]"
-                color="accent"
-              >
-                Buy Now
+              <button mat-stroked-button [routerLink]="['/product-details', product.pid]" color="accent">
+                Details
               </button>
             </mat-card-actions>
           </mat-card>
